@@ -1,0 +1,15 @@
+const http = require("http"); //permet de creer un serveur
+const app = require("./app");
+
+/*
+const server = http.createServer((req, res) => {
+  //res.end("Voila la reponse du serveur !"); end permet de renvoyer un resultat à l'appelant
+}); //a chaque requete recu par le serveur, on execute cette fonction*/
+
+app.set("port", process.env.PORT || 3000); //défini le port de notre application
+
+const server = http.createServer(app); //pour passer notre application à notre serveur
+
+server.listen(process.env.PORT || 3000); //ecoute les requetes envoyer
+//en param : le port qu'on ecoute
+// process.env.port permet d'utiliser le port envoyer par l'environnement que nous utilisons

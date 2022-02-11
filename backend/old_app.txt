@@ -1,0 +1,30 @@
+const express = require("express");
+const res = require("express/lib/response");
+
+const app = express(); //créer une application express
+
+//middleware 1
+app.use((req, res, next) => {
+  console.log("Requête reçue !");
+  next(); //permet de renvoyer au middleware 2 et de continuer le code, si on ne met pas ça, l execution s'arretera au middleware 1
+});
+
+//middleware 2
+app.use((req, res, next) => {
+  res.status(201);
+  next();
+});
+
+//middleware 3
+app.use((req, res, next) => {
+  //next permet de renvoyer à la prochaine fonction l execution du server
+  res.json({ message: "Voila la reponse du serveur !" }); //json permet de renvoyer un resultat à l'appelant en json
+  next();
+}); //la méthode s'executera pour tout type de requete
+
+//middleware 4
+app.use((req, res) => {
+  console.log("La réponse à été envoyé avec succès !");
+});
+
+module.exports = app; //exporte l'application pour y accéder depuis les autre fichier de notre appli
