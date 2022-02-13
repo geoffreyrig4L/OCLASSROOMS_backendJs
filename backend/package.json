@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/geoffreyrig4L/backend_OpenClassrooms#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.2.1"
   }
 }

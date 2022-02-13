@@ -2,7 +2,9 @@ const express = require("express");
 const res = require("express/lib/response");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+
 const stuffRoutes = require("./routes/stuff");
+const userRoutes = require("./routes/user");
 
 mongoose
   .connect(
@@ -34,5 +36,7 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 
 app.use("/api/stuff", stuffRoutes);
+
+app.use("/api/auth", userRoutes);
 
 module.exports = app; //exporte l'application pour y accéder depuis les autre fichier de notre appli
